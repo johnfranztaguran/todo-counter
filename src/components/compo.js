@@ -2,8 +2,10 @@ import React from 'react';
 
 const Compo = (props) => {
     const {  changeHere, allHere } = props
+    console.log(props)
+  console.log(typeof props)
     
-    
+    console.log("change", changeHere)
     return (
         <div>
             

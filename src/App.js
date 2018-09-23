@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Compo from './components/compo';
+import Color from './components/color';
+import Input from './components/input';
+import Display from './components/displayList';
+import Dating from './components/challenge/dating';
 //import Input from './components/input';
 
 
@@ -12,23 +16,28 @@ class App extends Component {
             items: []
         }
         this.allHere = this.allHere.bind(this)
-        
-        // this.onSubmit = this.onSubmit.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
-    onChange(input){
-        console.log(this.state.input)
-        this.setState({
-            input: input
-        })
+    // onChange(input){
         
-    }
-    onSubmit(input){
-        let listItem = this.state.items
-        listItem.push(input)
+    //     // console.log(this.state.input)
+    //     this.setState({
+    //         input: input
+    //     })
+        
+    // }
+    // onSubmit(input){
+    //     let listItem = this.state.items
+    //     listItem.push(input)
+    //     this.setState({
+    //         items: listItem
+    //     })
+    //     this.state.input = ""
+    // }
+    onSubmit(item){
         this.setState({
-            items: listItem
+            items: [...this.state.items, item]
         })
-        this.state.input = ""
     }
 
     allHere(hand, operator){
@@ -50,7 +59,7 @@ class App extends Component {
     render() { 
         return ( 
             <div>
-                <Compo
+                {/* <Compo
                     allHere={this.allHere}
                     changeHere={this.state.count}
                 />
@@ -63,6 +72,16 @@ class App extends Component {
                     {this.state.items.map((val) => <li key={val}>{val}</li>)}
                 </ul>
                 </div>
+                <Color />
+                <hr /> */}
+                <Input 
+                list = {this.state.items}
+                    onSubmit={this.onSubmit}
+                />
+               <Display
+                itemDisplay={this.state.items}
+               />
+               <Dating />
             </div>
          );
     }
